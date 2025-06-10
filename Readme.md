@@ -88,6 +88,5 @@ The model is trained on agricultural data containing:
 ### Local Development
      python app.py
      
-## 🚀 Deployment
 
     
