@@ -3,14 +3,14 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 import os
 
-flask_app = Flask(__name__, template_folder="templates")
+app = Flask(__name__, template_folder="templates")  # Changed from flask_app to app
 model = pickle.load(open("model.pkl", "rb"))
 
-@flask_app.route("/")
+@app.route("/")  # Changed from flask_app to app
 def Home():
     return render_template("index.html")
 
-@flask_app.route("/predict", methods=["POST"])
+@app.route("/predict", methods=["POST"])  # Changed from flask_app to app
 def predict():
     float_features = [float(x) for x in request.form.values()]
     features = [np.array(float_features)]
@@ -19,4 +19,4 @@ def predict():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
-    flask_app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port)  # Changed from flask_app to app
